@@ -23,7 +23,10 @@ const App = () => {
   
   const handleSubmit = (event) => {
 	  event.preventDefault()
-	  if(persons.filter(person => person.name===newName).length!==0){
+	  const regexp = new RegExp("^"+newName+"$",'g')
+	  const regexplower = new RegExp("^"+newName.toLowerCase()+"$",'g')
+	  const regexpupper = new RegExp("^"+newName.toUpperCase()+"$",'g')
+	  if(persons.filter(person => (regexp.test(person.name))||(regexplower.test(person.name.toLowerCase()))||(regexpupper.test(person.name.toUpperCase()))).length!==0){
 		  alert(`${newName} is already added to phonebook`)
 	  }
 	  else{
