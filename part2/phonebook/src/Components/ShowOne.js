@@ -1,9 +1,10 @@
 import React from 'react'
 
 const ShowOne = (props) => {
-	const {person} = props
+	const {person, delEntry} = props
+	
 	return (
-		<p key={person.id}>{person.name} {person.number}</p>
+		<div key={person.id}>{person.name} {person.number} <button onClick={delEntry}>delete</button></div>
 	)
 }
 
