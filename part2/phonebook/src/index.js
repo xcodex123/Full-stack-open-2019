@@ -1,17 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
 import Add from './Components/Add'
 import Show from './Components/Show'
 const App = () => {
-  const [ persons, setPersons] = useState([
-    { 
-	  name: 'Arto Hellas',
-	  number: '040-1234567'
-	}
-  ]) 
+  const [ persons, setPersons] = useState([]) 
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   
+  const hook = () => {
+  console.log('effect')
+  axios
+    .get('http://localhost:3002/persons')
+    .then(response => {
+      console.log('promise fulfilled')
+      setPersons(response.data)
+    })
+  }
+
+  useEffect(hook, [])
   
   const handleNameChange = (event) => {
 	  setNewName(event.target.value)
@@ -32,13 +39,16 @@ const App = () => {
 	  else{
 	  const newPerson = [{
 		  name: newName,
-		  number: newNumber
+		  number: newNumber,
+		  id: persons.length+1
 		}]
 	  setPersons(persons.concat(newPerson))
 	  setNewName('')
 	  setNewNumber('')
 	  }
   }
+  
+  console.log(persons)
   
   return (
     <div>

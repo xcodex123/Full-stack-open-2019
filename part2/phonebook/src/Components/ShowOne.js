@@ -1,9 +1,9 @@
 import React from 'react'
 
 const ShowOne = (props) => {
-	const {person,i} = props
+	const {person} = props
 	return (
-		<p key={i}>{person.name} {person.number}</p>
+		<p key={person.id}>{person.name} {person.number}</p>
 	)
 }
 

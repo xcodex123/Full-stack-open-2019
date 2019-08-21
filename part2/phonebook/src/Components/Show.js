@@ -4,7 +4,7 @@ const Show = (props) => {
 	const {persons} = props
 	return (
 		<div>
-			{persons.map((person,i) => <ShowOne person={person} i={i} />)}
+			{persons.map((person) => <ShowOne person={person}/>)}
 	  </div>
 	)
 }
