@@ -11,19 +11,14 @@
       "id": 2
     },
     {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
+      "name": "Socrates",
+      "number": "00-1100-11",
       "id": 3
     },
     {
-      "name": "Quagmire",
-      "number": "98-76-54-321",
+      "name": "Nikola Tesla",
+      "number": "44-11-2323431",
       "id": 4
-    },
-    {
-      "name": "Pewdiepie",
-      "number": "99000000",
-      "id": 5
     }
   ]
 }

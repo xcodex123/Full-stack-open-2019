@@ -4,11 +4,24 @@ import axios from 'axios'
 import Add from './Components/Add'
 import Show from './Components/Show'
 import personService from './Services/persons'
+import './index.css'
 const App = () => {
   const [ persons, setPersons] = useState([]) 
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
+  const [ notif, setNotif ] = useState({message: "",messageClass: "nothing"})
   
+  const Notification = ({ message, messageClass }) => {
+  if (message === '') {
+    return null
+  }
+  return (
+    <div className = {messageClass}>
+      {message}
+    </div>
+  )
+  }
+
   const hook = () => {
 
   console.log('effect')
@@ -45,6 +58,8 @@ const App = () => {
 		}
 	  personService.create(newPerson).then(response => {
 		  setPersons(persons.concat(response))
+		  setNotif({message: `Added ${newName}`,messageClass:"added"})
+		  setTimeout(() => setNotif({message:"",messageClass:"nothing"}),3000)
 		  setNewName('')
 		  setNewNumber('')
 	  })
@@ -60,6 +75,8 @@ const App = () => {
 			then(response => {
 				const newPersons = persons.filter(person => person.id !== id)
 				setPersons(newPersons)
+				setNotif({message:`${person.name} is Deleted`,messageClass:"deleted"})
+				setTimeout(() => setNotif({message:"",messageClass:"nothing"}),3000)
 			})
 		}
 	}
@@ -69,6 +86,7 @@ const App = () => {
     <div>
 	
       <h2>Phonebook</h2>
+	  <Notification message={notif.message} messageClass={notif.messageClass} />
 	  <Add newName={newName} newNumber={newNumber} handleSubmit={handleSubmit} handleNameChange={handleNameChange} handleNumberChange={handleNumberChange}/>
       <h2>Numbers</h2>
       <Show persons={persons} delEntry={delEntry}/>
