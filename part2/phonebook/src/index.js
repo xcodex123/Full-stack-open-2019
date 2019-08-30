@@ -5,6 +5,7 @@ import Add from './Components/Add'
 import Show from './Components/Show'
 import personService from './Services/persons'
 import './index.css'
+const baseUrl = '/api/persons'
 const App = () => {
   const [ persons, setPersons] = useState([]) 
   const [ newName, setNewName ] = useState('')
@@ -26,7 +27,7 @@ const App = () => {
 
   console.log('effect')
   axios
-    .get('http://localhost:3002/persons')
+    .get(baseUrl)
     .then(response => {
       console.log('promise fulfilled')
       setPersons(response.data)
@@ -85,10 +86,18 @@ const App = () => {
   return (
     <div>
 	
-      <h2>Phonebook</h2>
+      <h2 style={{
+		  fontFamily: 'Roboto Mono',
+		  textAlign: "center",
+		  textDecoration: "underline"
+	  }}>Phonebook</h2>
 	  <Notification message={notif.message} messageClass={notif.messageClass} />
 	  <Add newName={newName} newNumber={newNumber} handleSubmit={handleSubmit} handleNameChange={handleNameChange} handleNumberChange={handleNumberChange}/>
-      <h2>Numbers</h2>
+      <h2 style={{
+		  fontFamily: 'Roboto Mono',
+		  textAlign: "center",
+		  textDecoration: "underline"
+	  }}>Numbers</h2>
       <Show persons={persons} delEntry={delEntry}/>
     </div>
   )

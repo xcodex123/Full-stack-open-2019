@@ -13,15 +13,21 @@ code {
 }
 
 .added {
-  background-color: rgb(0,255,0);
-  padding: 11px;
+  background-color: rgb(255,255,255);
+  text-align: center;
   margin-bottom: 12px;
-  color: white
+  color: rgb(0,255,0);
+  font-family:'Roboto Mono', monospace;
+  border: 5px solid rgb(0,255,0);
+  border-radius: 10px;
 }
 
 .deleted {
-  background-color: rgb(255,0,0);
-  padding: 11px;
+  background-color: rgb(255,255,255);
+  text-align: center;
   margin-bottom: 12px;
-  color: white
+  color: rgb(255,0,0);
+  font-family:'Roboto Mono', monospace;
+  border: 5px solid rgb(255,0,0);
+  border-radius: 10px;
 }
